@@ -14,7 +14,14 @@ document.getElementById("search-btn").addEventListener("click", function(){
 var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
 var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=imperial&appid=" + apiKey;
 // console.log(queryUrl)
-fetch(queryUrl);
+fetch(queryUrl).then(function(response){
+    // console.log(response)
+    if (response.ok){
+        response.json().then(function(data){
+            console.log(data)
+        })
+    }
+});
 })
 
     
