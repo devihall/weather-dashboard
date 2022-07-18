@@ -3,11 +3,13 @@ var pEL = document.querySelector("#currentDate");
 var currentDate = document.querySelector("#currentDate");
 var currentCity = document.querySelector("#current-city");
 var cityInput = document.querySelector(".form-control");
-var weatherContainer = document.querySelector("#weather-container");
+var tempContainer = document.querySelector("#temp-container");
+var humidContainer = document.querySelector("#humid-container");
+var windContainer = document.querySelector("#wind-container");
 var cityArr = [];
 ////////////////////current date///////////////////////////
 var currentDate = moment().format("MMM Do YY");
-pEL.textContent = currentDate;
+pEL.textContent = "Today's date " + currentDate;
 
 //////////grab user input and pass as a query parameter///////
 document.getElementById("search-btn").addEventListener("click", function () {
@@ -29,9 +31,10 @@ document.getElementById("search-btn").addEventListener("click", function () {
         displayWeatherData(data);
         cityArr.push(cityInput);
         // console.log(cityArr)
-        console.log(JSON.stringify(cityArr));
-        console.log(cityArr);
-        localStorage.setItem("city", cityArr);
+        // console.log(JSON.stringify(cityArr));
+        // console.log(cityArr);
+        localStorage.setItem("city", JSON.stringify(cityArr));
+        // console.log(cityArr)
       });
     } else {
       alert("There was a problem");
@@ -45,9 +48,12 @@ var displayWeatherData = function (data) {
   //   console.log(currentTemp);
   //   currentTemp.textContent = data.main.temp;
   // weatherContainer.innerHTML = "<p>Hello</p>";
-  weatherContainer.innerHTML = "<p>" + data.main.temp + "</p>";
+  tempContainer.innerHTML =
+    "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
+  humidContainer.innerHTML = "<p>" + "Humidity " +data.main.humidity + " %" + "</p>";
+  windContainer.innerHTML = "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
-  //   console.log(data.main);
+  console.log(data.main);
 };
 
 //////add user input to a list previously searched cities/////////

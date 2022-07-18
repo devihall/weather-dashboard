@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Weather Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="card">
+      <div
+        class="card-body text-center fs-1 p-3 bg-info bg-opacity-10 border border-info border-start-0"
+      >
+        <h1>Weather Dashboard</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <label for="exampleDataList" class="form-label"
+            ><h6>Search for City:</h6></label
+          >
+          <input class="input form-control" type="text" list="datalistOptions"
+          id="input-box" exampleDataList" value="" placeholder="Type to search...">
+          <ul style="list-style: none" id="cities" class="city-ul"></ul>
 
-<div class="card">
-  <div class="card-body text-center fs-1 p-3 bg-info bg-opacity-10 border border-info border-start-0 "><h1>
-    Weather Dashboard</h1>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <label for="exampleDataList" class="form-label"><h6>
-      Search for City:</h6></label>
-        <input class="input form-control" type="text" list="datalistOptions" id="input-box" exampleDataList" value="" placeholder="Type to search...">
-        <ul style="list-style: none;" id="cities" class="city-ul"></ul>
-    
-        <div class="d-grid gap-2">
-            <button type="button" id="search-btn" class="btn btn-primary">Search</button>
+          <div class="d-grid gap-2">
+            <button type="button" id="search-btn" class="btn btn-primary">
+              Search
+            </button>
+          </div>
         </div>
+        <div class="col-8 fs-3 text-start">
+          <p id="currentDate"></p>
+          <h2>Weather Today</h2>
+          <h3 id="current-city"></h3>
+          <div id="temp-container"></div>
+          <div id="humid-container"></div>
+          <div id="wind-container"></div>
+        </div>
+      </div>
     </div>
-    <div  class="col-8 fs-3 text-start">
-        <h2>Weather Today</h2>
-      <p id="currentDate"></p>
-      <h3 id="current-city"></h3>
-      <div id="weather-container"></div>
+
+    <div class="container border border-primary text-md-start">
+      <h3>5-day Weather Forecast</h3>
     </div>
-  </div>
-</div>
-    
-<div class="container border border-primary text-md-start">
-<h3>5-day Weather Forecast</h3>
-</div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="assets/script.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/script.js"></script>
+  </body>
 </html>
