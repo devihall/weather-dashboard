@@ -3,6 +3,7 @@ var pEL = document.querySelector("#currentDate");
 var currentDate = document.querySelector("#currentDate");
 var currentCity = document.querySelector("#current-city");
 var cityInput = document.querySelector(".form-control");
+var iconContainer = document.querySelector("#icon-container");
 var tempContainer = document.querySelector("#temp-container");
 var humidContainer = document.querySelector("#humid-container");
 var windContainer = document.querySelector("#wind-container");
@@ -44,16 +45,18 @@ document.getElementById("search-btn").addEventListener("click", function () {
 
 //////////////diplay weather data for searched city//////////////
 var displayWeatherData = function (data) {
-  //   var currentTemp = document.createElement("p");
-  //   console.log(currentTemp);
-  //   currentTemp.textContent = data.main.temp;
-  // weatherContainer.innerHTML = "<p>Hello</p>";
-  tempContainer.innerHTML =
-    "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
+  currentCity.innerHTML = "<p>" + data.name + "</p>"
+
+  /////////////////////////////////////////////////////////////////////////
+  iconContainer.innerHTML = "<img src=",
+    "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png" ;
+  //////////////////////////////////////////////////////////////////////////
+  
+  tempContainer.innerHTML = "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
   humidContainer.innerHTML = "<p>" + "Humidity " +data.main.humidity + " %" + "</p>";
   windContainer.innerHTML = "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
-  console.log(data.main);
+  console.log(data);
 };
 
 //////add user input to a list previously searched cities/////////
