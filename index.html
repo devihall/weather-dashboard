@@ -20,17 +20,18 @@
     <div class="col-4">
       <label for="exampleDataList" class="form-label"><h6>
       Search for City:</h6></label>
-        <input class="form-control" list="datalistOptions" id="input-box" exampleDataList" value="" placeholder="Type to search...">
+        <input class="input form-control" type="text" list="datalistOptions" id="input-box" exampleDataList" value="" placeholder="Type to search...">
         <ul style="list-style: none;" id="cities" class="city-ul"></ul>
     
         <div class="d-grid gap-2">
             <button type="button" id="search-btn" class="btn btn-primary">Search</button>
         </div>
     </div>
-    <div class="col-8 fs-3 text-start">
+    <div  class="col-8 fs-3 text-start">
         <h2>Weather Today</h2>
       <p id="currentDate"></p>
       <h3 id="current-city"></h3>
+      <div id="weather-container"></div>
     </div>
   </div>
 </div>
