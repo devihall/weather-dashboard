@@ -8,9 +8,7 @@ var tempContainer = document.querySelector("#temp-container");
 var humidContainer = document.querySelector("#humid-container");
 var windContainer = document.querySelector("#wind-container");
 var cityArr = [];
-// var lat = data.coord.lat
-// console.log(lat)
-// var lon = data.coord.lon
+
 ////////////////////current date//////////////////////////////////
 var currentDate = moment().format("MMM Do YY");
 pEL.textContent = "Today's date " + currentDate;
@@ -87,6 +85,9 @@ document.getElementById("search-btn").addEventListener("click", function () {
     // console.log(response)
     if (response.ok){
       response.json().then(function (forecast) {
+        // console.log(forecast)
+        JSON.parse
+        for (var i = 0; i < 4; i++){}
         console.log(forecast)
     })
   }
