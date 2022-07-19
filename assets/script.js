@@ -1,4 +1,4 @@
-//////////////////DOM element references///////////////////
+//////////////////DOM element references//////////////////////////
 var pEL = document.querySelector("#currentDate");
 var currentDate = document.querySelector("#currentDate");
 var currentCity = document.querySelector("#current-city");
@@ -8,11 +8,14 @@ var tempContainer = document.querySelector("#temp-container");
 var humidContainer = document.querySelector("#humid-container");
 var windContainer = document.querySelector("#wind-container");
 var cityArr = [];
-////////////////////current date///////////////////////////
+// var lat = data.coord.lat
+// console.log(lat)
+// var lon = data.coord.lon
+////////////////////current date//////////////////////////////////
 var currentDate = moment().format("MMM Do YY");
 pEL.textContent = "Today's date " + currentDate;
 
-//////////grab user input and pass as a query parameter///////
+//////////grab user input and pass as a query parameter///////////
 document.getElementById("search-btn").addEventListener("click", function () {
   var cityInput = document.querySelector(".form-control").value;
   var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
@@ -23,7 +26,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
     apiKey;
   // console.log(queryUrl)
 
-  ////////////////////get weather data/////////////////////
+  ////////////////////get weather data/////////////////////////////
   fetch(queryUrl).then(function (response) {
     // console.log(response)
     if (response.ok) {
@@ -47,10 +50,10 @@ document.getElementById("search-btn").addEventListener("click", function () {
 var displayWeatherData = function (data) {
   currentCity.innerHTML = "<p>" + data.name + "</p>"
 
-  /////////////////////////////////////////////////////////////////////////
-  iconContainer.innerHTML = "<img src= https://openweathermap.org/img/w/" + data.weather[0].icon + ".png" ;
+  /////////////////////display icon//////////////////////////////
+  iconContainer.innerHTML = "<img>" + "src= https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png" ;
   console.log(data.weather[0].icon);
-  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
   
   tempContainer.innerHTML = "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
   humidContainer.innerHTML = "<p>" + "Humidity " +data.main.humidity + " %" + "</p>";
@@ -58,8 +61,14 @@ var displayWeatherData = function (data) {
   // console.log(currentTemp);
   // console.log(data);
 };
+//////////////////////////UV index///////////////////////////////////
 
-//////add user input to a list previously searched cities/////////
+
+
+
+
+
+////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
   var cityInput = document.getElementById("input-box").value;
   var searchedCities = document.createElement("li");
@@ -68,10 +77,21 @@ document.getElementById("search-btn").addEventListener("click", function () {
   document.getElementById("cities").append(searchedCities);
 });
 
-//////////5 day forecast//////////////////
-
-
-
+//////////5 day forecast///////////////////////////////////
+document.getElementById("search-btn").addEventListener("click", function () { 
+  var cityInput = document.querySelector(".form-control").value;
+  var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
+  var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&units=imperial&appid=" + apiKey 
+  // console.log(forecastURL)
+  fetch(forecastURL).then(function (response) {
+    // console.log(response)
+    if (response.ok){
+      response.json().then(function (forecast) {
+        console.log(forecast)
+    })
+  }
+})
+})
 
 
 
