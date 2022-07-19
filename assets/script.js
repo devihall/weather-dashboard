@@ -48,15 +48,15 @@ var displayWeatherData = function (data) {
   currentCity.innerHTML = "<p>" + data.name + "</p>"
 
   /////////////////////////////////////////////////////////////////////////
-  iconContainer.innerHTML = "<img src=",
-    "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png" ;
+  iconContainer.innerHTML = "<img src= https://openweathermap.org/img/w/" + data.weather[0].icon + ".png" ;
+  console.log(data.weather[0].icon);
   //////////////////////////////////////////////////////////////////////////
   
   tempContainer.innerHTML = "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
   humidContainer.innerHTML = "<p>" + "Humidity " +data.main.humidity + " %" + "</p>";
   windContainer.innerHTML = "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
-  console.log(data);
+  // console.log(data);
 };
 
 //////add user input to a list previously searched cities/////////
@@ -67,6 +67,13 @@ document.getElementById("search-btn").addEventListener("click", function () {
   searchedCities.className = "city-ul";
   document.getElementById("cities").append(searchedCities);
 });
+
+//////////5 day forecast//////////////////
+
+
+
+
+
 
 // ////////////save cities in local storage/////////////////////
 // var inputBox = document.querySelector("#input-box")
