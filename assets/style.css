@@ -1,3 +1,6 @@
 .city-ul{
     list-style: none;
 }
+#today-weather{
+   border: lightblue;
+}

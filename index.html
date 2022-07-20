@@ -28,8 +28,7 @@
             ><h6>Search for City:</h6></label
           >
           <input class="input form-control" type="text" list="datalistOptions"
-          id="input-box" exampleDataList" value="" placeholder="Type to
-          search...">
+          id="input-box" exampleDataList" value="" placeholder="Type to search...">
           <ul style="list-style: none" id="cities" class="city-ul"></ul>
 
           <div class="d-grid gap-2">
@@ -38,11 +37,11 @@
             </button>
           </div>
         </div>
-        <div class="col-8 fs-3 text-start">
+        <div  id="today-weather" class="col-8 fs-3 text-start">
           <p id="currentDate"></p>
           <h2>Weather today in</h2>
           <h3 id="current-city"></h3>
-          <img src="" id="icon-container" />
+          <div id="icon-container"></div>
           <div id="temp-container"></div>
           <div id="humid-container"></div>
           <div id="wind-container"></div>
@@ -52,19 +51,17 @@
 
     <div
       id="forecast-container"
-      class="container border border-primary text-md-start">
+      class="container border border-primary text-md-start"
+    >
       <h3>5-day Weather Forecast</h3>
       <div id="day1">
-        <div id="forecast-temp">
-        </div>
+        <div id="forecast-temp"></div>
       </div>
       <div id="day2">
-        <div id="forecast-temp">
-        </div>
+        <div id="forecast-temp"></div>
       </div>
       <div id="day3">
-        <div id="forecast-temp">
-        </div>
+        <div id="forecast-temp"></div>
       </div>
     </div>
 

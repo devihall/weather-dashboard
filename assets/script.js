@@ -46,25 +46,27 @@ document.getElementById("search-btn").addEventListener("click", function () {
 
 //////////////diplay weather data for searched city//////////////
 var displayWeatherData = function (data) {
-  currentCity.innerHTML = "<p>" + data.name + "</p>"
+  currentCity.innerHTML = "<p>" + data.name + "</p>";
 
   /////////////////////display icon//////////////////////////////
-  iconContainer.innerHTML = "<img>" + "src= https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png" ;
+  iconContainer.innerHTML =
+    "<img src='https://openweathermap.org/img/wn/" +
+    data.weather[0].icon +
+    ".png' >";
   console.log(data.weather[0].icon);
+  // <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
   //////////////////////////////////////////////////////////////////////
-  
-  tempContainer.innerHTML = "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
-  humidContainer.innerHTML = "<p>" + "Humidity " +data.main.humidity + " %" + "</p>";
-  windContainer.innerHTML = "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
+
+  tempContainer.innerHTML =
+    "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
+  humidContainer.innerHTML =
+    "<p>" + "Humidity " + data.main.humidity + " %" + "</p>";
+  windContainer.innerHTML =
+    "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
-  // console.log(data);
+  console.log(data);
 };
 //////////////////////////UV index///////////////////////////////////
-
-
-
-
-
 
 ////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
@@ -76,25 +78,32 @@ document.getElementById("search-btn").addEventListener("click", function () {
 });
 
 //////////5 day forecast///////////////////////////////////
-document.getElementById("search-btn").addEventListener("click", function () { 
+document.getElementById("search-btn").addEventListener("click", function () {
   var cityInput = document.querySelector(".form-control").value;
   var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
-  var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&units=imperial&appid=" + apiKey 
+  var forecastURL =
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    cityInput +
+    "&units=imperial&appid=" +
+    apiKey;
   // console.log(forecastURL)
   fetch(forecastURL).then(function (response) {
     // console.log(response)
-    if (response.ok){
-      response.json().then(function (forecast) {
+    if (response.ok) {
+      response.json().then(function (data) {
         // console.log(forecast)
-        JSON.parse
-        for (var i = 0; i < 4; i++){}
-        console.log(forecast)
-    })
-  }
-})
-})
-
-
+        JSON.parse;
+        for (var i = 0; i < 5; i++) {
+          document.getElementById("day" + (i + 1) + "Max").innerHTML =
+            "Max: " +
+            Number(data.list[i].main.temp_max - 273.15).toFixed(2) +
+            "°";
+          console.log(data);
+        }
+      });
+    }
+  });
+});
 
 // ////////////save cities in local storage/////////////////////
 // var inputBox = document.querySelector("#input-box")
