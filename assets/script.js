@@ -104,6 +104,11 @@ document.getElementById("search-btn").addEventListener("click", function () {
           temperatureContainerEl.textContent = "Forecast Temp: " + Number(data.list[i].main.temp) + "°";
           forecastContainerEl.append(temperatureContainerEl);
           forecastGroupContainerEl.append(forecastContainerEl);
+          var forecastHumidContainerEl = document.createElement("div");
+          forecastHumidContainerEl.className = "forecast-humid-container";
+          forecastHumidContainerEl.textContent =
+            "Forecast Humidity: " + Number(data.list[i].main.humidity) + "%";
+            forecastContainerEl.append(forecastHumidContainerEl);
         }
       });
     }
