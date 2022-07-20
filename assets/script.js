@@ -7,6 +7,9 @@ var iconContainer = document.querySelector("#icon-container");
 var tempContainer = document.querySelector("#temp-container");
 var humidContainer = document.querySelector("#humid-container");
 var windContainer = document.querySelector("#wind-container");
+var forecastGroupContainerEl = document.querySelector(
+  "#forecast-group-container"
+);
 var cityArr = [];
 
 ////////////////////current date//////////////////////////////////
@@ -53,9 +56,9 @@ var displayWeatherData = function (data) {
     "<img src='https://openweathermap.org/img/wn/" +
     data.weather[0].icon +
     ".png' >";
-  console.log(data.weather[0].icon);
-  // <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
-  //////////////////////////////////////////////////////////////////////
+  // console.log(data.weather[0].icon);
+
+  /////////////////////////////////////////////////////////////////
 
   tempContainer.innerHTML =
     "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
@@ -64,9 +67,9 @@ var displayWeatherData = function (data) {
   windContainer.innerHTML =
     "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
-  console.log(data);
+  // console.log(data);
 };
-//////////////////////////UV index///////////////////////////////////
+//////////////////////////UV index////////////////////////////////
 
 ////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
@@ -91,14 +94,16 @@ document.getElementById("search-btn").addEventListener("click", function () {
     // console.log(response)
     if (response.ok) {
       response.json().then(function (data) {
-        // console.log(forecast)
+        console.log(data);
         JSON.parse;
         for (var i = 0; i < 5; i++) {
-          document.getElementById("day" + (i + 1) + "Max").innerHTML =
-            "Max: " +
-            Number(data.list[i].main.temp_max - 273.15).toFixed(2) +
-            "°";
-          console.log(data);
+          var forecastContainerEl = document.createElement("div");
+          forecastContainerEl.className = "forecast-container";
+          var temperatureContainerEl = document.createElement("div");
+          temperatureContainerEl.className = "temperature-container";
+          temperatureContainerEl.textContent = "Forecast Temp: " + Number(data.list[i].main.temp) + "°";
+          forecastContainerEl.append(temperatureContainerEl);
+          forecastGroupContainerEl.append(forecastContainerEl);
         }
       });
     }
