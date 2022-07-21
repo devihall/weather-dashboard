@@ -94,22 +94,44 @@ document.getElementById("search-btn").addEventListener("click", function () {
     // console.log(response)
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(data);
+        // console.log(data);
         JSON.parse;
         for (var i = 0; i < 5; i++) {
           var forecastContainerEl = document.createElement("div");
           forecastContainerEl.className = "forecast-container";
-          var temperatureContainerEl = document.createElement("div");
-          temperatureContainerEl.className = "temperature-container";
-          temperatureContainerEl.textContent = "Forecast Temp: " + Number(data.list[i].main.temp) + "°";
-          forecastContainerEl.append(temperatureContainerEl);
           forecastGroupContainerEl.append(forecastContainerEl);
 
-          // var forecastHumidContainerEl = document.createElement("div");
-          // forecastHumidContainerEl.className = "forecast-humid-container";
-          // forecastHumidContainerEl.textContent =
-          //   "Forecast Humidity: " + Number(data.list[i].main.humidity) + "%";
-          //   forecastContainerEl.append(forecastHumidContainerEl);
+          var forecastDateContainerEl = document.createElement("div");
+          forecastDateContainerEl.className = "forecast-date-container";
+          forecastDateContainerEl.textContent = "Date: " + data.list[i].dt_txt;
+          forecastContainerEl.append(forecastDateContainerEl);
+
+          var forecastCityContainerEl = document.createElement("div");
+          forecastCityContainerEl.className = "forecast-city-container";
+          forecastCityContainerEl.textContent = data.city.name;
+          // console.log(data.city.name);
+          // console.log(data.list[i]);
+          // console.log(data);
+          forecastContainerEl.append(forecastCityContainerEl);
+
+          var temperatureContainerEl = document.createElement("div");
+          temperatureContainerEl.className = "temperature-container";
+          temperatureContainerEl.textContent =
+            "Forecast Temp: " + Number(data.list[i].main.temp) + "°";
+          forecastContainerEl.append(temperatureContainerEl);
+
+          var forecastHumidContainerEl = document.createElement("div");
+          forecastHumidContainerEl.className = "forecast-humid-container";
+          forecastHumidContainerEl.textContent =
+            "Forecast Humidity: " + Number(data.list[i].main.humidity) + "%";
+          forecastContainerEl.append(forecastHumidContainerEl);
+
+          var forecastWindContainerEl = document.createElement("div");
+          forecastWindContainerEl.className = "forecast-wind-container";
+          forecastWindContainerEl.textContent =
+            "Forecast Wind Speed: " + data.list[i].wind.speed + " MPH";
+          forecastContainerEl.append(forecastWindContainerEl);
+
         }
       });
     }
