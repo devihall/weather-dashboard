@@ -34,7 +34,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
     if (response.ok) {
       response.json().then(function (data) {
 
-        console.log(data)
+        // console.log(data)
 
         var lon = data.coord.lon;
         var lat = data.coord.lat;
@@ -75,6 +75,7 @@ var displayWeatherData = function (data) {
 //////////////////////////UV index////////////////////////////////
 
 var displayUVIData = function (lon,lat){
+console.log(displayUVIData)
 
   var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
   var uviQueryUrl ="https://api.openweathermap.org/data/2.5/uvi?&lat=" + lat +"&lon=" +lon + "&appid=" +apiKey;
@@ -83,7 +84,7 @@ var displayUVIData = function (lon,lat){
     
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(data);
+        // console.log(data);
          uviContainer.innerHTML = "<p>" + data.name + "</p>";
        
       });
