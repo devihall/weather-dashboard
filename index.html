@@ -3,30 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./assets/style.css"/>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Weather Dashboard</title>
   </head>
   <body>
     <div class="card">
       <div
-        class="card-body text-center fs-1 p-3 bg-info bg-opacity-10 border border-info border-start-0"
-      >
+        class="card-body text-center fs-1 p-3 bg-info bg-opacity-10 border border-info border-start-0">
         <h1>Weather Dashboard</h1>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <label for="exampleDataList" class="form-label"
-            ><h6>Search for City:</h6></label
-          >
+    <div class="container-fluid">
+      <div class="row justify-content-around">
+        <div class="col-sm-2">
+          <label for="exampleDataList" class="form-label">
+            <h6>Search for City:</h6></label>
           <input class="input form-control" type="text" list="datalistOptions"
           id="input-box" exampleDataList" value="" placeholder="Type to search...">
           <ul style="list-style: none" id="cities" class="city-ul"></ul>
@@ -37,7 +35,9 @@
             </button>
           </div>
         </div>
-        <div  id="today-weather" class="col-8 fs-3 text-start">
+       
+        <div  class="col-6 border rounded-5 text-center">
+        <div  id="today-weather">
           <p id="currentDate"></p>
           <h2>Weather today in</h2>
           <h3 id="current-city"></h3>
@@ -46,16 +46,15 @@
           <div id="humid-container"></div>
           <div id="wind-container"></div>
         </div>
+        </div>
+        
       </div>
     </div>
-
-    <div
-      id="forecast-group-container"
-      class="container border border-primary text-md-start"
-    >
-      <h3>5-day Weather Forecast</h3>
+    <div class="card border-primary text-md-start">
+    <div id="forecast-group-container"> 
+      <h3>5-day Weather Forecast</h3>  
     </div>
-
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

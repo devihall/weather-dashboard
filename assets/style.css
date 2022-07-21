@@ -4,3 +4,23 @@
 #today-weather{
    border: lightblue;
 }
+.container{
+    display: inline-grid;
+    border: 25px;
+    background-color: lightblue;
+}
+    
+.text-md-start{
+    margin: 15px;
+    padding:10px ;
+    text-align: center;
+}
+.col-6{
+    margin: 15px;
+}
+.card{
+    margin-bottom: 15px;
+}
+.rounded-5{
+    margin-top: 15px;
+}
