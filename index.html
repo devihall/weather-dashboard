@@ -16,13 +16,13 @@
   <body>
     <div class="card">
       <div
-        class="card-body text-center fs-1 p-3 bg-info bg-opacity-10 border border-info border-start-0">
+        class="card-body text-center bg-info border border-info border-start-0">
         <h1>Weather Dashboard</h1>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row justify-content-around">
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <label for="exampleDataList" class="form-label">
             <h6>Search for City:</h6></label>
           <input class="input form-control" type="text" list="datalistOptions"
@@ -36,7 +36,7 @@
           </div>
         </div>
        
-        <div  class="col-6 border rounded-5 text-center">
+        <div  class="today-container col-sm-6 border rounded-5 text-center">
         <div  id="today-weather">
           <p id="currentDate"></p>
           <h2>Weather today in</h2>
@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="card border-primary text-md-start">
-    <div id="forecast-group-container"> 
+    <div class="forecast-card" id="forecast-group-container"> 
       <h3>5-day Weather Forecast</h3>  
     </div>
     </div>
