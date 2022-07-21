@@ -7,6 +7,7 @@ var iconContainer = document.querySelector("#icon-container");
 var tempContainer = document.querySelector("#temp-container");
 var humidContainer = document.querySelector("#humid-container");
 var windContainer = document.querySelector("#wind-container");
+var uviContainer = document.querySelector("#uvi-container");
 var forecastGroupContainerEl = document.querySelector(
   "#forecast-group-container"
 );
@@ -32,12 +33,16 @@ document.getElementById("search-btn").addEventListener("click", function () {
     // console.log(response)
     if (response.ok) {
       response.json().then(function (data) {
-        // console.log(data);
+
+        console.log(data)
+
+        var lon = data.coord.lon;
+        var lat = data.coord.lat;
+       
         displayWeatherData(data);
         cityArr.push(cityInput);
-        // console.log(cityArr)
-        // console.log(JSON.stringify(cityArr));
-        // console.log(cityArr);
+        displayUVIData(lon,lat)
+
         localStorage.setItem("city", JSON.stringify(cityArr));
         // console.log(cityArr)
       });
@@ -58,18 +63,37 @@ var displayWeatherData = function (data) {
     ".png' >";
   // console.log(data.weather[0].icon);
 
-  /////////////////////////////////////////////////////////////////
-
-  tempContainer.innerHTML =
-    "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
-  humidContainer.innerHTML =
-    "<p>" + "Humidity " + data.main.humidity + " %" + "</p>";
-  windContainer.innerHTML =
-    "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
+  ////////////////////display temperature////////////////////////////
+  tempContainer.innerHTML = "<p>" + "Temperature " + data.main.temp + "	&#8457" + "</p>";
+  ////////////////////display humidity////////////////////////////
+  humidContainer.innerHTML = "<p>" + "Humidity " + data.main.humidity + " %" + "</p>";
+  ////////////////////display wind speed////////////////////////
+  windContainer.innerHTML = "<p>" + "Wind Speed " + data.wind.speed + " mph" + "</p>";
   // console.log(currentTemp);
   // console.log(data);
 };
 //////////////////////////UV index////////////////////////////////
+
+var displayUVIData = function (lon,lat){
+
+  var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
+  var uviQueryUrl ="https://api.openweathermap.org/data/2.5/uvi?&lat=" + lat +"&lon=" +lon + "&appid=" +apiKey;
+  
+  fetch(uviQueryUrl).then(function (response) {
+    
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data);
+         uviContainer.innerHTML = "<p>" + data.name + "</p>";
+       
+      });
+    }
+  });
+};
+
+// var displayUVIData = function (data) {
+//   uviContainer.innerHTML = "<p>" + data.name + "</p>";
+// };
 
 ////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
@@ -97,15 +121,18 @@ document.getElementById("search-btn").addEventListener("click", function () {
         // console.log(data);
         JSON.parse;
         for (var i = 0; i < 5; i++) {
+          ////////forecast parent element//////////////////
           var forecastContainerEl = document.createElement("div");
           forecastContainerEl.className = "forecast-container";
           forecastGroupContainerEl.append(forecastContainerEl);
 
+          /////forecast date container/////////////////////
           var forecastDateContainerEl = document.createElement("div");
           forecastDateContainerEl.className = "forecast-date-container";
           forecastDateContainerEl.textContent = "Date: " + data.list[i].dt_txt;
           forecastContainerEl.append(forecastDateContainerEl);
 
+          /////forecast city container/////////////////////
           var forecastCityContainerEl = document.createElement("div");
           forecastCityContainerEl.className = "forecast-city-container";
           forecastCityContainerEl.textContent = data.city.name;
@@ -114,24 +141,32 @@ document.getElementById("search-btn").addEventListener("click", function () {
           // console.log(data);
           forecastContainerEl.append(forecastCityContainerEl);
 
+          /////forecast icon container/////////////////////
+          var forecastIconContainerEl = document.createElement("img");
+          forecastIconContainerEl.className = "forecast-icon-container";
+          // forecastIconContainerEl.innerHTML = "<img src='https://openweathermap.org/img/wn/" + data.weather[i].icon + ".png' >";
+          forecastContainerEl.append(forecastIconContainerEl);
+
+          /////forecast temp container/////////////////////
           var temperatureContainerEl = document.createElement("div");
           temperatureContainerEl.className = "temperature-container";
           temperatureContainerEl.textContent =
-            "Forecast Temp: " + Number(data.list[i].main.temp) + "°";
+            "Temp: " + Number(data.list[i].main.temp) + "°";
           forecastContainerEl.append(temperatureContainerEl);
 
+          /////forecast humidity container/////////////////////
           var forecastHumidContainerEl = document.createElement("div");
           forecastHumidContainerEl.className = "forecast-humid-container";
           forecastHumidContainerEl.textContent =
-            "Forecast Humidity: " + Number(data.list[i].main.humidity) + "%";
+            "Humidity: " + Number(data.list[i].main.humidity) + "%";
           forecastContainerEl.append(forecastHumidContainerEl);
 
+          /////forecast wind container/////////////////////
           var forecastWindContainerEl = document.createElement("div");
           forecastWindContainerEl.className = "forecast-wind-container";
           forecastWindContainerEl.textContent =
-            "Forecast Wind Speed: " + data.list[i].wind.speed + " MPH";
+            "Wind Speed: " + data.list[i].wind.speed + " MPH";
           forecastContainerEl.append(forecastWindContainerEl);
-
         }
       });
     }
