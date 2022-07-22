@@ -2,6 +2,8 @@ A weather dashboard with form inputs to search for a city. You will be presented
 
 When you view future weather conditions for that city, you will be presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 
+This project was developed using the API from OpenWeather, all data is fetched though JavaScript fetch API.
+
 
 
 
