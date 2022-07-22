@@ -77,15 +77,7 @@ var displayWeatherData = function (data) {
 var displayUVIData = function (lon,lat){
 // console.log(displayUVIData)
 
-// var uviQueryUrl =
-//   "https://api.openweathermap.org/data/3.0/onecall?lat=" +
-//   lat +
-//   "&lon=" +
-//   lon +
-//   "&appid=" +
-//   apiKey;
-
-  var uviQueryUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=28.53&lon=-81.37&appid=a77950eae898ecd8c88501ac3b12b6b6";
+  var uviQueryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=28.53&lon=-81.37&appid=a77950eae898ecd8c88501ac3b12b6b6";
   // var uviQueryUrl =`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
   
   fetch(uviQueryUrl).then(function (response) {
@@ -97,10 +89,6 @@ var displayUVIData = function (lon,lat){
     }
   });
 };
-
-// var displayUVIData = function (data) {
-//   uviContainer.innerHTML = "<p>" + data.name + "</p>";
-// };
 
 ////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
