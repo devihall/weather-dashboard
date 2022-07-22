@@ -12,6 +12,7 @@ var forecastGroupContainerEl = document.querySelector(
   "#forecast-group-container"
 );
 var cityArr = [];
+var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
 
 ////////////////////current date//////////////////////////////////
 var currentDate = moment().format("MMM Do YY");
@@ -20,7 +21,6 @@ pEL.textContent = "Today's date " + currentDate;
 //////////grab user input and pass as a query parameter///////////
 document.getElementById("search-btn").addEventListener("click", function () {
   var cityInput = document.querySelector(".form-control").value;
-  var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
   var queryUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityInput +
@@ -34,14 +34,14 @@ document.getElementById("search-btn").addEventListener("click", function () {
     if (response.ok) {
       response.json().then(function (data) {
 
-        // console.log(data)
+        console.log(data)
 
-        var lon = data.coord.lon;
+        var lon = data.coord.lon; 
         var lat = data.coord.lat;
        
         displayWeatherData(data);
         cityArr.push(cityInput);
-        displayUVIData(lon,lat)
+        displayUVIData(lon,lat);
 
         localStorage.setItem("city", JSON.stringify(cityArr));
         // console.log(cityArr)
@@ -72,21 +72,27 @@ var displayWeatherData = function (data) {
   // console.log(currentTemp);
   // console.log(data);
 };
+
 //////////////////////////UV index////////////////////////////////
-
 var displayUVIData = function (lon,lat){
-console.log(displayUVIData)
+// console.log(displayUVIData)
 
-  var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
-  var uviQueryUrl ="https://api.openweathermap.org/data/2.5/uvi?&lat=" + lat +"&lon=" +lon + "&appid=" +apiKey;
+// var uviQueryUrl =
+//   "https://api.openweathermap.org/data/3.0/onecall?lat=" +
+//   lat +
+//   "&lon=" +
+//   lon +
+//   "&appid=" +
+//   apiKey;
+
+  var uviQueryUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=28.53&lon=-81.37&appid=a77950eae898ecd8c88501ac3b12b6b6";
+  // var uviQueryUrl =`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
   
   fetch(uviQueryUrl).then(function (response) {
-    
     if (response.ok) {
       response.json().then(function (data) {
-        // console.log(data);
-         uviContainer.innerHTML = "<p>" + data.name + "</p>";
-       
+        console.log('uvi data is', data);
+         uviContainer.innerHTML = "<p>" + data.current.uvi + "</p>";
       });
     }
   });
@@ -107,25 +113,24 @@ document.getElementById("search-btn").addEventListener("click", function () {
 
 //////////5 day forecast///////////////////////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
+  forecastGroupContainerEl.replaceChildren();
   var cityInput = document.querySelector(".form-control").value;
-  var apiKey = "a77950eae898ecd8c88501ac3b12b6b6";
   var forecastURL =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
-    cityInput +
-    "&units=imperial&appid=" +
-    apiKey;
+    cityInput +"&units=imperial&appid=" + apiKey;
   // console.log(forecastURL)
   fetch(forecastURL).then(function (response) {
     // console.log(response)
     if (response.ok) {
       response.json().then(function (data) {
         // console.log(data);
-        JSON.parse;
+        // JSON.parse;
         for (var i = 0; i < 5; i++) {
           ////////forecast parent element//////////////////
           var forecastContainerEl = document.createElement("div");
           forecastContainerEl.className = "forecast-container";
           forecastGroupContainerEl.append(forecastContainerEl);
+
 
           /////forecast date container/////////////////////
           var forecastDateContainerEl = document.createElement("div");
