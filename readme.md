@@ -3,7 +3,9 @@ A weather dashboard with form inputs to search for a city. You will be presented
 When you view future weather conditions for that city, you will be presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 
 
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
 
 
-![Screenshot]([https://github.com/devihall/weather-dashboard/blob/main/Screen%20Shot%202022-07-21%20at%2010.16.05%20PM.png])
+
+![Screenshot](https://github.com/devihall/weather-dashboard/blob/main/Screen%20Shot%202022-07-21%20at%2010.16.05%20PM.png)
 
