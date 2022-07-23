@@ -9,6 +9,15 @@
     border: 25px;
     background-color: lightblue;
 }
+.uvi-medium{
+    background-color: yellow;
+}
+.uvi-low {
+    background-color: rgb(159, 236, 92);
+}
+.uvi-high {
+    background-color: red;
+}
     
 .text-md-start{
     margin: 15px;

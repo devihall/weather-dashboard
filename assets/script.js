@@ -84,7 +84,14 @@ var displayUVIData = function (lon,lat){
     if (response.ok) {
       response.json().then(function (data) {
         console.log('uvi data is', data);
-         uviContainer.innerHTML = "<p>" + data.current.uvi + "</p>";
+         uviContainer.innerHTML = "<p>" + "UVI "+ data.current.uvi + "</p>";
+         if (data.current.uvi > 3) {
+           uviContainer.className = "uvi-medium";
+         } else if (data.current.uvi > 7){
+          uviContainer.className = "uvi-high"
+         } else {
+          uviContainer.className = "uvi-low"
+         }
       });
     }
   });
