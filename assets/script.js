@@ -34,7 +34,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
     if (response.ok) {
       response.json().then(function (data) {
 
-        console.log(data)
+        // console.log(data)
 
         var lon = data.coord.lon; 
         var lat = data.coord.lat;
@@ -83,7 +83,7 @@ var displayUVIData = function (lon,lat){
   fetch(uviQueryUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        console.log('uvi data is', data);
+        // console.log('uvi data is', data);
          uviContainer.innerHTML = "<p>" + "UVI "+ data.current.uvi + "</p>";
          if (data.current.uvi > 3) {
            uviContainer.className = "uvi-medium";
@@ -100,12 +100,29 @@ var displayUVIData = function (lon,lat){
 ////////////////////list previously searched cities//////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
   var cityInput = document.getElementById("input-box").value;
-  var searchedCities = document.createElement("li");
+  var searchedCities = document.createElement("button");
   searchedCities.textContent = cityInput;
-  searchedCities.className = "city-ul";
+  searchedCities.className = "city-button";
   document.getElementById("cities").append(searchedCities);
+  document.querySelector(".city-button");
+  ///////for loop for adding event listener to each city input//////
+
+  for (let i=0; i < cityArr; i++){
+    // console.log (i)
+    searchedCities.addEventListener("click", function () {
+ console.log("button was clicked");
+ })
+  }
 });
 
+
+// cityArr.forEach(searchedCityClick)
+  
+//  function searchedCityClick(){
+//   document.querySelector(".city-button").addEventListener("click", function () {
+//     console.log("button was clicked");
+//   })
+//  }
 //////////5 day forecast///////////////////////////////////
 document.getElementById("search-btn").addEventListener("click", function () {
   forecastGroupContainerEl.replaceChildren();
